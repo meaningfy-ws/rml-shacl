@@ -1,0 +1,85 @@
+###############################################################################
+# R2RML Graph Map and graph shortcut shape                                    #
+# Author: Dylan Van Assche                                                    #
+# Copyright IDLab - UGent - IMEC (2020)                                       #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RRGraphMapShape
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rr:graphMap" ;
+    sh:description """
+    Represents a graph map.
+    """ ;
+    sh:message """
+    rr:GraphMap must specify an rr:template or rr:constant with the IRI of the 
+    Named Graph.
+    """ ;
+
+    # Exactly one rr:template or one rr:constant is required
+    sh:property [
+        sh:path [sh:alternativePath (rr:template rr:constant)] ;
+        sh:name "rr:template/rr:constant" ;
+        sh:description """
+        Exactly one rr:template or one rr:constant is required.
+        """ ;
+        sh:message """
+        Exactly one rr:template or one rr:constant is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rr:template
+    sh:property [
+        sh:path rr:template ;
+        sh:name "rr:template" ;
+        sh:description """
+        A template (format string) to specify how to generate a value for a 
+        subject, predicate, or object, using one or more columns from a logical
+        table row or iterator.
+        """ ;
+        sh:message """
+        rr:template must be a string.
+        """ ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype xsd:string ;
+    ] ;
+
+    # rr:constant
+    sh:property [
+        sh:path rr:constant ;
+        sh:name "rr:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rr:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+.
+
+
+schema:RRgraphShape 
+    a sh:NodeShape ;
+    sh:closed "true"^^xsd:boolean ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rr:graph" ;
+    sh:description """
+    An IRI reference for use as the graph name of all triples generated with 
+    the GraphMap. 
+    """ ;
+    sh:message """
+    rr:graph must be an IRI.
+    """ ;
+    sh:nodeKind sh:IRI ;
+.
