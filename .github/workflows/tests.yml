@@ -27,4 +27,4 @@ jobs:
         pipenv install
     - name: Run tests
       run: |
-        python3 tests.py
+        pipenv run python3 tests.py
