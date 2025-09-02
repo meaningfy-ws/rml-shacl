@@ -10,7 +10,7 @@
     An object property that provides a single schema description, used as the 
     default for all the tables in the group.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     TableSchema description for a CSVW Table. 1 csvw:columns is required.
     """ ;
@@ -69,7 +69,7 @@
     An RML Logical Source: D2RQ Database describes how a relational database 
     needs to be accessed.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     An RML Logical Source description for a D2RQ Database requires exactly
     one d2rq:jdbcDSN, one d2rq:jdbcDriver. d2rq:username and d2rq:password are
@@ -139,7 +139,7 @@
     ns1:description """
     Represents a logical table.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:LogicalTable must provide either one rr:tableName or one rr:sqlQuery.
     rr:sqlVersion is optional. 
@@ -192,7 +192,7 @@
     ns1:description """
     Represents a triples map.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:TriplesMap requires exactly one rr:subject or one rr:subjectMap and zero
     or more rr:predicateObjectMaps.
@@ -331,7 +331,7 @@
     csvw:header, one csvw:headerRowCount, one csvw:skipColumns, one 
     csvw:skipRows and one csvw:commentPrefix are optional.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message "CSVW Dialect violation" ;
     ns1:name "csvw:Dialect" ;
     ns1:property [ ns1:datatype xsd:string ;
@@ -544,7 +544,7 @@
     An RML Logical Source: CSVW Table describes how a CSV needs to be accessed
     and processed.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     An RML Logical Source description for a CSVW Table requires exactly one
     csvw:url and optionally one csvw:dialect or one csvw:tableSchema.
@@ -873,7 +873,7 @@
     ns1:description """
     Represents an object map.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:name "rr:ObjectMap" ;
     ns1:property [ ns1:description """
         An IRI indicating whether subject or object generated using the 
@@ -988,7 +988,7 @@
     ns1:description """
     Represents a predicate map.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:name "rr:PredicateMap" ;
     ns1:property [ ns1:description """
         The subject value generated for a logical table row will be asserted 
@@ -1080,7 +1080,7 @@
 
 <http://schema.org/RRPredicateObjectMapShape> a ns1:NodeShape ;
     ns1:closed true ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:property [ ns1:description """
         Either an rr:graph or rr:graphMap may be optionally be provided, but 
         not both.
@@ -1186,7 +1186,7 @@
     ns1:description """
     Represents a reference object map.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:RefObjectMap must specify a rr:parentTriplesMap and zero or more 
     rr:joinConditions.
@@ -1247,7 +1247,7 @@
     ns1:description """
     Represents a subject map.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:subjectMap requires one rr:template or one rr:column or 1 rr:constant or
     one rml:reference.
@@ -1383,7 +1383,7 @@
     An IRI reference for use as object for all the RDF triples generated from 
     a logical table row or iterator.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:object shortcut for rr:objectMap must be an IRI.
     """ ;
@@ -1396,7 +1396,7 @@
     Specifies the predicate for the generated triple from the logical table 
     row or iterator.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:predicate must be an IRI.
     """ ;
@@ -1409,7 +1409,7 @@
     An IRI reference for use as subject for all the RDF triples generated from 
     a logical table row or iterator.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:subject shortcut for rr:subjectMap must be an IRI.
     """ ;
@@ -1422,7 +1422,7 @@
     An RML Logical Source description for an SD Service describes how a 
     SPARQL service must be accessed. 
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """ 
     An RML Logical Source description for an SD Service requires exactly
     one sd:endpoint, one sd:supportedLanguage and one sd:resultFormat 
@@ -1535,8 +1535,8 @@
     organization, temporal and spatial resolution, level of detail or profiles 
     (which might specify any or all of the above). 
     """ ;
-    ns1:ignoredProperties ( rdf:type ),
-        ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ),
+        ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     A DCAT Distribution requires exactly one dcat:downloadURL property.
     """ ;
@@ -1588,7 +1588,7 @@
     ns1:description """
     Represents a graph map.
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:GraphMap must specify an rr:template or rr:constant with the IRI of the 
     Named Graph.
@@ -1633,7 +1633,7 @@
     An IRI reference for use as the graph name of all triples generated with 
     the GraphMap. 
     """ ;
-    ns1:ignoredProperties ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     rr:graph must be an IRI.
     """ ;
@@ -1646,8 +1646,8 @@
     An RML Logical Source description for a DCAT Dataset describes how a DCAT
     Dataset must be accessed.
     """ ;
-    ns1:ignoredProperties ( rdf:type ),
-        ( rdf:type ) ;
+    ns1:ignoredProperties ( rdf:type rdfs:label rdfs:comment ),
+        ( rdf:type rdfs:label rdfs:comment ) ;
     ns1:message """
     An RML Logical Source description for a DCAT Dataset requires exactly one
     dcat:distribution property.
