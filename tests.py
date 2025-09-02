@@ -14,7 +14,7 @@ from os.path import abspath
 from typing import Tuple, List
 from rdflib import Graph
 
-from mapping_validator import MappingValidator
+from src.mapping_validator import MappingValidator
 
 VALIDATION_MAPPING_RULES_DIR = abspath('tests/assets/validation') + '/*/*.ttl'
 RML_RULES_SHAPE = abspath('rml_rules_shape.ttl')
